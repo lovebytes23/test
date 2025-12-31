@@ -334,10 +334,8 @@
 
 <script>
 const CLOUD_NAME = "dupitg9lm";
-const UPLOAD_PRESET = "images";
+const UPLOAD_PRESET = "images"; // تأكد إنه Unsigned
 
-
-// album id من اللينك
 const params = new URLSearchParams(location.search);
 let albumId = params.get("album");
 
@@ -350,35 +348,37 @@ if (!albumId) {
 const STORAGE_KEY = "album_" + albumId;
 const galleryGrid = document.getElementById("galleryGrid");
 
-// تحميل الصور المحفوظة
 loadSavedImages();
 
 async function uploadImages(e) {
   for (let file of e.target.files) {
-
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", UPLOAD_PRESET);
 
-    const res = await fetch(
-      `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
-      { method: "POST", body: formData }
-    );
+    try {
+      const res = await fetch(
+        `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
+        { method: "POST", body: formData }
+      );
 
+      const data = await res.json();
+      console.log("Cloudinary response:", data);
 
-    const data = await res.json();
+      if (!data.secure_url) {
+        alert("الصورة لم تُرفع ❌");
+        continue;
+      }
 
-    if (!data.secure_url) {
-      console.error("Cloudinary error:", data);
-      alert("الصورة لم تُرفع ❌");
-      continue;
+      saveImage(data.secure_url);
+      addImage(data.secure_url);
+
+    } catch (err) {
+      console.error(err);
+      alert("خطأ في الاتصال ❌");
     }
-
-    saveImage(data.secure_url);
-    addImage(data.secure_url);
   }
 }
-
 
 function addImage(url) {
   const div = document.createElement("div");
@@ -402,11 +402,8 @@ function loadSavedImages() {
   if (!images) return;
   images.forEach(addImage);
 }
-
-const data = await res.json();
-console.log(data);
-
 </script>
+
 
             
             <button class="btn-romantic" onclick="goToPage('wishes-screen')">
