@@ -1,0 +1,1314 @@
+/* ================================ */
+/* الإعدادات العامة */
+/* ================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Tajawal", "Amiri", sans-serif;
+  background: linear-gradient(135deg, #c31432 0%, #240b36 25%, #0f5132 50%, #8b0000 75%, #c31432 100%);
+  background-size: 400% 400%;
+  animation: christmasGradient 15s ease infinite;
+  min-height: 100vh;
+  color: white;
+  overflow-x: hidden;
+  direction: rtl;
+}
+
+@keyframes christmasGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ================================ */
+/* خلفية شجر الكريسماس والقلوب */
+/* ================================ */
+
+.christmas-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.christmas-tree-bg {
+  position: absolute;
+  font-size: 30px;
+  animation: floatDown 15s linear infinite;
+  opacity: 0.4;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 0, 0.6));
+}
+
+.heart-bg {
+  position: absolute;
+  font-size: 25px;
+  animation: floatHeart 12s ease-in-out infinite;
+  opacity: 0.5;
+  filter: drop-shadow(0 0 8px rgba(255, 0, 127, 0.8));
+}
+
+@keyframes floatDown {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes floatHeart {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-50vh) rotate(180deg) scale(1.2);
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg) scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* ================================ */
+/* الحاوية الرئيسية */
+/* ================================ */
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 50px 25px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ================================ */
+/* الشاشات (الصفحات) */
+/* ================================ */
+
+.screen {
+  display: none;
+  animation: fadeInPage 1s ease-in;
+}
+
+.screen.active {
+  display: block;
+}
+
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ================================ */
+/* العناوين الرومانسية */
+/* ================================ */
+
+.romantic-title {
+  font-size: 2.2rem;
+  text-align: center;
+  margin: 25px 0;
+  font-family: "Amiri", serif;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 105, 180, 0.6), 0 0 30px rgba(255, 0, 127, 0.4);
+  animation: romanticPulse 3s ease-in-out infinite;
+}
+
+.title-heart {
+  display: inline-block;
+  animation: heartBeat 1.5s infinite;
+  font-size: 2.5rem;
+}
+
+@keyframes romanticPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 105, 180, 0.6), 0 0 40px rgba(255, 0, 127, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 105, 180, 0.8), 0 0 60px rgba(255, 0, 127, 0.6);
+  }
+}
+
+@keyframes heartBeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+}
+
+.big-romantic-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: "Amiri", serif;
+  font-weight: 800;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.7), 0 0 35px rgba(255, 0, 0, 0.5);
+  animation: titleGlow 2s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+  0%,
+  100% {
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.7), 0 0 50px rgba(255, 0, 0, 0.5);
+  }
+  50% {
+    text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.8), 0 0 50px rgba(255, 215, 0, 0.9), 0 0 80px rgba(255, 0, 0, 0.7);
+  }
+}
+
+.sparkle {
+  display: inline-block;
+  animation: sparkleRotate 3s linear infinite;
+}
+
+@keyframes sparkleRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ================================ */
+/* الأيقونات العلوية */
+/* ================================ */
+
+.top-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+}
+
+.icon-bounce {
+  display: inline-block;
+  animation: iconBounce 2s ease-in-out infinite;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.icon-bounce:nth-child(1) {
+  animation-delay: 0s;
+}
+.icon-bounce:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.icon-bounce:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.icon-bounce:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.icon-bounce:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+.icon-bounce:hover {
+  transform: scale(1.3) rotate(15deg);
+}
+
+@keyframes iconBounce {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.1);
+  }
+}
+
+/* ================================ */
+/* العد التنازلي */
+/* ================================ */
+
+.countdown-box {
+  background: linear-gradient(135deg, rgba(195, 20, 50, 0.3) 0%, rgba(15, 81, 50, 0.3) 50%, rgba(139, 0, 0, 0.3) 100%);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 30px;
+  border: 2px solid rgba(255, 215, 0, 0.5);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255, 215, 0, 0.1);
+}
+
+.countdown-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.countdown-header span {
+  font-size: 2rem;
+  animation: treeShake 2s ease-in-out infinite;
+}
+
+@keyframes treeShake {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
+
+.countdown-header h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: "Amiri", serif;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.time-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.3) 0%, rgba(0, 100, 0, 0.3) 100%);
+  padding: 15px 12px;
+  border-radius: 15px;
+  min-width: 80px;
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.time-unit:hover {
+  transform: translateY(-5px) scale(1.05);
+}
+
+.time-unit .number {
+  font-size: 2.2rem;
+  font-weight: bold;
+  font-family: "Amiri", serif;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5), 0 0 12px rgba(255, 215, 0, 0.6);
+  background: linear-gradient(180deg, #ffd700, #ff6347);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.time-unit .label {
+  font-size: 0.9rem;
+  margin-top: 8px;
+  opacity: 0.95;
+  font-weight: 600;
+}
+
+.time-separator {
+  font-size: 1.8rem;
+  animation: heartPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes heartPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.8;
+  }
+}
+
+/* ================================ */
+/* القفل وكلمة السر */
+/* ================================ */
+
+.lock-section {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.lock-icon {
+  font-size: 4rem;
+  margin-bottom: 15px;
+  animation: lockSwing 3s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes lockSwing {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(8deg);
+  }
+  75% {
+    transform: rotate(-8deg);
+  }
+}
+
+.lock-title {
+  font-size: 1.8rem;
+  font-family: "Amiri", serif;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.lock-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  font-style: italic;
+}
+
+.input-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 20px auto;
+  max-width: 450px;
+}
+
+.input-icon {
+  font-size: 2rem;
+  animation: iconFloat 2s ease-in-out infinite;
+}
+
+.input-icon:first-child {
+  animation-delay: 0s;
+}
+
+.input-icon:last-child {
+  animation-delay: 1s;
+}
+
+@keyframes iconFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.password-input {
+  flex: 1;
+  padding: 15px 20px;
+  font-size: 1.2rem;
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
+  color: white;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  font-family: "Tajawal", sans-serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.password-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.password-input:focus {
+  outline: none;
+  border-color: rgba(255, 215, 0, 0.8);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.5), 0 5px 25px rgba(0, 0, 0, 0.4);
+  transform: scale(1.02);
+}
+
+.error-message {
+  text-align: center;
+  color: #ff6b6b;
+  font-weight: bold;
+  font-size: 1rem;
+  min-height: 25px;
+  margin: 12px 0;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.hint-box {
+  background: rgba(255, 215, 0, 0.2);
+  border: 2px dashed rgba(255, 215, 0, 0.5);
+  border-radius: 12px;
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 450px;
+  backdrop-filter: blur(10px);
+}
+
+.hint {
+  text-align: center;
+  font-size: 0.95rem;
+  opacity: 0.9;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ================================ */
+/* الأزرار الرومانسية */
+/* ================================ */
+
+.btn-romantic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 30px auto;
+  padding: 15px 35px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #c31432 0%, #8b0000 50%, #c31432 100%);
+  background-size: 200% 200%;
+  border: 2px solid rgba(255, 215, 0, 0.6);
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(255, 215, 0, 0.2);
+  font-family: "Tajawal", sans-serif;
+  animation: buttonGlow 3s ease-in-out infinite;
+}
+
+@keyframes buttonGlow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255, 215, 0, 0.2);
+  }
+  50% {
+    background-position: 100% 50%;
+    box-shadow: 0 8px 35px rgba(255, 0, 0, 0.6), inset 0 0 30px rgba(255, 215, 0, 0.4);
+  }
+}
+
+.btn-romantic:hover {
+  transform: translateY(-5px) scale(1.08);
+  box-shadow: 0 15px 40px rgba(255, 0, 0, 0.6), inset 0 0 30px rgba(255, 215, 0, 0.4);
+}
+
+.btn-romantic:active {
+  transform: translateY(-2px) scale(1.03);
+}
+
+.btn-romantic span {
+  font-size: 1.4rem;
+  animation: btnIconSpin 2s linear infinite;
+}
+
+.btn-romantic.hidden {
+  display: none;
+}
+
+@keyframes btnIconSpin {
+  0%,
+  80%,
+  100% {
+    transform: rotate(0deg);
+  }
+  85%,
+  95% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ================================ */
+/* الزينة في الأسفل */
+/* ================================ */
+
+.bottom-decorations {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  font-size: 2rem;
+  margin-top: 40px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.bottom-decorations span {
+  display: inline-block;
+  animation: decorationDance 2s ease-in-out infinite;
+}
+
+.bottom-decorations span:nth-child(1) {
+  animation-delay: 0s;
+}
+.bottom-decorations span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.bottom-decorations span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.bottom-decorations span:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.bottom-decorations span:nth-child(5) {
+  animation-delay: 0.8s;
+}
+.bottom-decorations span:nth-child(6) {
+  animation-delay: 1s;
+}
+
+@keyframes decorationDance {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(10deg);
+  }
+}
+
+/* ================================ */
+/* شاشة الترحيب */
+/* ================================ */
+
+.welcome-message {
+  font-size: 1.2rem;
+  text-align: center;
+  line-height: 1.8;
+  margin: 20px auto;
+  max-width: 700px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  font-style: italic;
+}
+
+/* ================================ */
+/* الشجرة التفاعلية */
+/* ================================ */
+
+.tree-container {
+  text-align: center;
+  margin: 40px 0;
+  padding: 30px;
+  background: radial-gradient(circle, rgba(0, 100, 0, 0.2) 0%, transparent 70%);
+  border-radius: 20px;
+}
+
+.christmas-tree {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  padding: 20px;
+}
+
+.christmas-tree:hover {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.tree-star {
+  font-size: 3rem;
+  display: block;
+  text-align: center;
+  animation: starTwinkle 1s ease-in-out infinite;
+  margin-bottom: -8px;
+}
+
+@keyframes starTwinkle {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3) rotate(180deg);
+    opacity: 0.7;
+  }
+}
+
+.tree-body {
+  font-size: 7rem;
+  display: block;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.tree-decorations {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  display: flex;
+  gap: 30px;
+  z-index: 2;
+}
+
+.ornament {
+  display: inline-block;
+  animation: ornamentSwing 2s ease-in-out infinite;
+}
+
+.ornament:nth-child(1) {
+  animation-delay: 0s;
+}
+.ornament:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.ornament:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes ornamentSwing {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+}
+
+.tree-lights {
+  font-size: 1.2rem;
+  margin-top: 12px;
+  animation: lightsFlicker 1.5s ease-in-out infinite;
+}
+
+@keyframes lightsFlicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.tree-instruction {
+  font-size: 1.1rem;
+  margin-top: 20px;
+  opacity: 0.95;
+  font-weight: 600;
+}
+
+.tree-counter {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-top: 12px;
+  color: #ffd700;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* ================================ */
+/* الرسالة المخفية */
+/* ================================ */
+
+.hidden-message {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.8s ease;
+  margin-top: 30px;
+}
+
+.hidden-message.show {
+  max-height: 700px;
+  opacity: 1;
+}
+
+.message-card {
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.3) 0%, rgba(255, 105, 180, 0.3) 100%);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 30px;
+  border: 2px solid rgba(255, 215, 0, 0.5);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.message-card h3 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: "Amiri", serif;
+}
+
+.reveal-text {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  text-align: center;
+  font-style: italic;
+}
+
+.hearts-row {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 20px;
+  animation: heartsFloat 2s ease-in-out infinite;
+}
+
+@keyframes heartsFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ================================ */
+/* لعبة القلوب */
+/* ================================ */
+
+.hearts-game {
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.2) 0%, rgba(255, 105, 180, 0.2) 100%);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 30px 0;
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.game-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.game-header h3 {
+  font-size: 1.8rem;
+  font-family: "Amiri", serif;
+  margin-bottom: 12px;
+}
+
+.game-instruction {
+  font-size: 1.1rem;
+  opacity: 0.95;
+  font-style: italic;
+}
+
+.hearts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 15px;
+  max-width: 324px;
+  margin: 0 auto;
+}
+
+.heart {
+  font-size: 3rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.heart:hover {
+  transform: scale(1.3) rotate(10deg);
+}
+
+.heart.clicked {
+  opacity: 0.3;
+  transform: scale(0.8);
+  cursor: default;
+  pointer-events: none;
+}
+
+.hearts-counter {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 20px;
+  color: #ffd700;
+}
+
+.counter-decoration {
+  font-size: 1.5rem;
+  margin: 0 8px;
+}
+
+.hearts-number {
+  font-size: 1.6rem;
+  color: #ff6b6b;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* ================================ */
+/* رسالة الحب */
+/* ================================ */
+
+.love-letter {
+  background: linear-gradient(135deg, rgba(139, 0, 0, 0.3) 0%, rgba(220, 20, 60, 0.3) 100%);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  padding: 40px;
+  margin-top: 40px;
+  border: 3px solid rgba(255, 215, 0, 0.6);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(255, 215, 0, 0.1);
+}
+
+.love-letter.hidden {
+  display: none;
+}
+
+.letter-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.letter-decoration {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+.letter-header h2 {
+  font-size: 2.2rem;
+  font-family: "Amiri", serif;
+  margin: 15px 0;
+  color: #ffd700;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
+}
+
+.letter-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.letter-paragraph {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  margin-bottom: 20px;
+  text-align: justify;
+  text-indent: 30px;
+}
+
+.first-letter {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffd700;
+  font-family: "Amiri", serif;
+  float: right;
+  margin-left: 8px;
+  line-height: 1;
+}
+
+.special-paragraph {
+  background: rgba(255, 215, 0, 0.15);
+  padding: 20px;
+  border-radius: 15px;
+  border-right: 4px solid #ffd700;
+  font-weight: 600;
+}
+
+.signature-section {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.signature-decoration {
+  font-size: 1.5rem;
+  color: #ff69b4;
+}
+
+.signature-name {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffd700;
+  margin: 10px 0;
+  font-family: "Amiri", serif;
+}
+
+.signature-date {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* ================================ */
+/* معرض الذكريات */
+/* ================================ */
+
+.section-intro {
+  font-size: 1.2rem;
+  text-align: center;
+  line-height: 1.8;
+  margin: 20px auto 40px;
+  max-width: 700px;
+  font-style: italic;
+  opacity: 0.95;
+}
+
+.section-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.section-title span {
+  font-size: 2rem;
+}
+
+.section-title h3 {
+  font-size: 1.8rem;
+  font-family: "Amiri", serif;
+  color: #ffd700;
+}
+
+.video-section {
+  margin-bottom: 50px;
+}
+
+.video-wrapper {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 3px solid rgba(255, 215, 0, 0.5);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.video-placeholder {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  background: rgba(255, 0, 0, 0.7);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.play-button:hover {
+  background: rgba(255, 0, 0, 0.9);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-note {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.95rem;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+.gallery {
+  margin-top: 50px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.gallery-frame {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 3px solid rgba(255, 215, 0, 0.5);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  aspect-ratio: 1 / 1;
+}
+
+.gallery-frame:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 12px 40px rgba(255, 215, 0, 0.6);
+}
+
+.gallery-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.gallery-frame:hover img {
+  transform: scale(1.1);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.3), rgba(255, 105, 180, 0.3));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gallery-frame:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.overlay-heart {
+  font-size: 4rem;
+  animation: heartBeatOverlay 1s ease-in-out infinite;
+}
+
+@keyframes heartBeatOverlay {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+}
+
+.gallery-caption {
+  text-align: center;
+  padding: 10px;
+}
+
+.gallery-caption h4 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #ffd700;
+  font-family: "Amiri", serif;
+}
+
+.gallery-caption p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* ================================ */
+/* الأمنيات */
+/* ================================ */
+
+.wishes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.wish-card {
+  background: linear-gradient(135deg, rgba(139, 0, 0, 0.3) 0%, rgba(0, 100, 0, 0.3) 100%);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 30px;
+  border: 2px solid rgba(255, 215, 0, 0.5);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.wish-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 40px rgba(255, 215, 0, 0.6);
+}
+
+.wish-icon {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+}
+
+.wish-decoration {
+  font-size: 1.3rem;
+  margin: 10px 0;
+}
+
+.wish-card h3 {
+  font-size: 1.6rem;
+  font-family: "Amiri", serif;
+  color: #ffd700;
+  margin-bottom: 15px;
+}
+
+.wish-card p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  opacity: 0.95;
+}
+
+.wish-stars {
+  font-size: 1.5rem;
+  margin-top: 15px;
+}
+
+.final-message {
+  background: linear-gradient(135deg, rgba(255, 0, 0, 0.3) 0%, rgba(255, 105, 180, 0.3) 100%);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  padding: 40px;
+  margin-top: 50px;
+  border: 3px solid rgba(255, 215, 0, 0.6);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.final-message h2 {
+  font-size: 2.2rem;
+  font-family: "Amiri", serif;
+  color: #ffd700;
+  margin-bottom: 20px;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
+}
+
+.final-message p {
+  font-size: 1.2rem;
+  line-height: 1.9;
+  margin-bottom: 15px;
+}
+
+.final-message .hearts {
+  font-size: 2.5rem;
+  margin: 20px 0;
+}
+
+/* ================================ */
+/* Responsive Design */
+/* ================================ */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 15px;
+  }
+
+  .romantic-title {
+    font-size: 1.8rem;
+  }
+
+  .big-romantic-title {
+    font-size: 2rem;
+  }
+
+  .countdown {
+    gap: 8px;
+  }
+
+  .time-unit {
+    min-width: 65px;
+    padding: 12px 10px;
+  }
+
+  .time-unit .number {
+    font-size: 1.8rem;
+  }
+
+  .hearts-grid {
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 12px;
+  }
+
+  .heart {
+    font-size: 2.5rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .wishes-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .letter-paragraph {
+    font-size: 1rem;
+  }
+
+  .tree-body {
+    font-size: 5rem;
+  }
+  
+  .time-separator{
+    display: none;
+  }
+  
+}
+.footer-text{
+  text-align: center;
+}

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎄❤️ ذكرياتنا الرومانسية 🎄❤️</title>
+    
+    <!-- استيراد الخط العربي من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- ربط ملف CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- ================================ -->
+    <!-- خلفية شجر الكريسماس والقلوب المتحركة -->
+    <!-- ================================ -->
+    <div class="christmas-background" id="christmas-bg"></div>
+
+    <!-- ================================ -->
+    <!-- شاشة كلمة السر (الصفحة الأولى) -->
+    <!-- ================================ -->
+    <div class="screen active" id="password-screen">
+        <div class="container">
+
+            <!-- عنوان رومانسي -->
+            <h1 class="romantic-title">
+                <span class="title-heart">💝</span>
+                عالمنا الخاص
+                <span class="title-heart">💝</span>
+            </h1>
+
+            <!-- العد التنازلي للعام الجديد -->
+            <div class="countdown-box">
+                <div class="countdown-header">
+                    <span>🎄</span>
+                    <h2>العد التنازلي لبداية رحلتنا في 2026</h2>
+                    <span>🎄</span>
+                </div>
+                <div class="countdown" id="countdown">
+                    <div class="time-unit">
+                        <span class="number" id="days">00</span>
+                        <span class="label">يوم</span>
+                    </div>
+                    <div class="time-separator">❤️</div>
+                    <div class="time-unit">
+                        <span class="number" id="hours">00</span>
+                        <span class="label">ساعة</span>
+                    </div>
+                    <div class="time-separator">💕</div>
+                    <div class="time-unit">
+                        <span class="number" id="minutes">00</span>
+                        <span class="label">دقيقة</span>
+                    </div>
+                    <div class="time-separator">💖</div>
+                    <div class="time-unit">
+                        <span class="number" id="seconds">00</span>
+                        <span class="label">ثانية</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- قفل رومانسي -->
+            <div class="lock-section">
+                <div class="lock-icon">🔐</div>                <p class="lock-subtitle">الكلمة اللي تعرفها قلوبنا بس 💗</p>
+            </div>
+            
+            <!-- حقل إدخال كلمة السر -->
+            <div class="input-wrapper">
+                <span class="input-icon">🎄</span>
+                <input 
+                    type="password" 
+                    id="password-input" 
+                    class="password-input" 
+                    placeholder="اكتبي الكلمة السحرية..."
+                    autocomplete="off"
+                >
+                <span class="input-icon">❤️</span>
+            </div>
+            
+            <!-- رسالة الخطأ -->
+            <p class="error-message" id="error-message"></p>
+            
+            <!-- زر الدخول -->
+            <button class="btn-romantic" onclick="checkPassword()">
+                <span>🎁</span>
+                افتحي صندوق الذكريات
+                <span>🎁</span>
+            </button>
+            
+        </div>
+    </div>
+
+    <!-- ================================ -->
+    <!-- شاشة الترحيب (الصفحة الثانية) -->
+    <!-- ================================ -->
+    <div class="screen" id="welcome-screen">
+        <div class="container">
+            <!-- عنوان ترحيبي رومانسي -->
+            <h1 class="big-romantic-title">
+                <span class="sparkle">✨</span>
+                أهلاً يا نور حياتي
+                <span class="sparkle">✨</span>
+            </h1>
+            
+            <p class="welcome-message">
+                من يوم ما دخلتي حياتي والدنيا بقت أحلى، كل يوم معاكي هدية من ربنا 💝
+            </p>
+
+            <!-- شجرة كريسماس تفاعلية -->
+            <div class="tree-container">
+                <div class="christmas-tree" id="interactive-tree">
+                    <div class="tree-star">⭐</div>
+                    <div class="tree-body">🎄</div>
+                    <div class="tree-lights">✨💫✨💫✨</div>
+                </div>
+                <p class="tree-instruction">اضغطي على الشجرة 5 مرات عشان تشوفي المفاجأة 🎁</p>
+                <p class="tree-counter" id="tree-counter">
+                    <span>🎄</span> المرات المتبقية: 5 <span>❤️</span>
+                </p>
+            </div>
+            
+            <!-- رسالة مخفية -->
+            <div class="hidden-message" id="hidden-message">
+                <div class="message-card">
+                    <h3>💖 رسالة من القلب 💖</h3>
+                    <p class="reveal-text">
+                        في كل نجمة في السماء، في كل نبضة في قلبي، 
+                        في كل لحظة بعيشها... أنتِ موجودة.<br><br>
+                        أنتِ الهدية الأجمل اللي ربنا أعطاهالي،
+                        وكل يوم معاكي أحلى من اللي قبله 🎄❤️
+                    </p>
+                    <div class="hearts-row">
+                        💝 💗 💖 💕 💓
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn-romantic hidden" id="continue-btn" onclick="goToPage('love-screen')">
+                <span>💌</span>
+                أكملي لرسالة الحب
+                <span>💌</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ================================ -->
+    <!-- شاشة رسالة الحب (الصفحة الثالثة) -->
+    <!-- ================================ -->
+    <div class="screen" id="love-screen">
+        <div class="container">
+            <h1 class="big-romantic-title">
+                <span>💌</span>
+                رسالة من أعماق القلب
+                <span>💌</span>
+            </h1>
+            
+            <!-- لعبة القلوب -->
+            <div class="hearts-game">
+                <div class="game-header">
+                    <h3>🎄 لعبة القلوب الرومانسية 🎄</h3>
+                    <p class="game-instruction">
+                        اضغطي على كل القلوب عشان تفتحي الرسالة 💕
+                    </p>
+                </div>
+                <div class="hearts-grid" id="hearts-grid">
+                    <!-- القلوب هتتولد بالجافاسكريبت -->
+                </div>
+                <p class="hearts-counter">
+                    <span class="counter-decoration">🎁</span>
+                    القلوب المتبقية: <span id="hearts-left" class="hearts-number">12</span>
+                    <span class="counter-decoration">🎄</span>
+                </p>
+            </div>
+            
+            <!-- رسالة الحب الطويلة -->
+            <div class="love-letter hidden" id="love-letter">
+                <div class="letter-header">
+                    <h2>إلى حبيبة قلبي...</h2>
+                </div>
+                
+                <div class="letter-content">
+    <p class="letter-paragraph">
+     ا أجمل عطية ربنا بعتهالي
+        يا فرحة قلبي ونور أيامي وسبب راحتي…
+    </p>
+    
+    <p class="letter-paragraph">
+        من أول لحظة شفتك فيها وأنا حاسس إن الدنيا ابتدت من جديد.
+        ضحكتك بتنور حياتي زي لمعة نجمة في ليلة كريسماس،
+        وصوتك بيطمن قلبي ويمسح أي تعب جواه.
+        كل ثانية معاكي نعمة، وكل كلمة منك ذكرى محفورة جوايا ومش هتتمحي 💝
+    </p>
+    
+    <p class="letter-paragraph">
+        أنتِ مش مجرد حبيبتي،
+        أنتِ الأمان اللي كنت بدور عليه،
+        والسعادة اللي كنت بحلم أوصلها،
+        والحب اللي كنت مستنيه من غير ما أعرف شكله.
+        معاكي بحس إني في بيتي، حتى لو الدنيا كلها بعيدة 🏠❤️
+    </p>
+    
+    <p class="letter-paragraph">
+        مع كل دقة قلب، بحبك أكتر من اللي قبلها،
+        ومع كل صباح جديد، بشكر ربنا إنه جمعني بيكي.
+        وجودك في حياتي نعمة كبيرة،
+        وأنتِ المعنى الحقيقي للحب،
+        والمعنى اللي بيخلّي للحياة طعم 🌟
+    </p>
+    
+    <p class="letter-paragraph">
+        الكريسماس مش بس شجرة وهدايا،
+        الكريسماس إحساس دافي،
+        وأحلى إحساس فيه هو إننا سوا.
+        كل نور بشوفه يفكرني بعينيكي،
+        وكل هدية قدامي بتأكدلي إنك أعظم هدية في عمري 🎄🎁
+    </p>
+    
+    <p class="letter-paragraph">
+        ووعد مني ليكي:
+        هفضل دايمًا ضهرك وسندك،
+        في الفرح قبل الحزن،
+        وفي النجاح قبل التعب.
+        هحافظ عليكي بقلبى،
+        وهخليكي دايمًا حاسة إنك أغلى حاجة في الدنيا…
+        لأنك فعلًا كده بالنسبة لي، وهتفضلي كده العمر كله 💍
+    </p>
+    
+    <p class="letter-paragraph special-paragraph">
+        سنة 2026 هتبقى سنتنا بإذن الله،
+        سنة نضحك فيها أكتر،
+        ونحلم فيها من غير خوف،
+        ونقرب فيها لبعض أكتر من أي وقت فات.
+        ومهما الدنيا لفت بينا،
+        قلبي هيفضل مكانك،
+        وحبك هيفضل منوّر حياتي زي أنوار الكريسماس 🎄✨
+    </p>
+    
+    <p class="signature-section">
+        بحبك حب مالوش آخر<br>
+        <span class="signature-name">حبيبك للأبد 💖</span><br>
+        <small class="signature-date">🎄 28 ديسمبر 2025 🎄</small><br>
+
+    </p>
+</div>
+
+                
+                <button class="btn-romantic" onclick="goToPage('memories-screen')">
+                    <span>📸</span>
+                    شوفي ذكرياتنا الجميلة
+                    <span>📸</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================ -->
+    <!-- شاشة الذكريات (الصفحة الرابعة) -->
+    <!-- ================================ -->
+    <div class="screen" id="memories-screen">
+        <div class="container">
+            <h1 class="big-romantic-title">
+                <span>📸</span>
+                ذكرياتنا الجميلة
+                <span>📸</span>
+            </h1>
+            
+            <p class="section-intro">
+                كل صورة معاكي حكاية، وكل لحظة معاكي ذكرى محفورة في القلب 💕
+            </p>
+
+            <!-- قسم الفيديو -->
+            <div class="video-section">
+                <div class="section-title">
+                    <span>🎬</span>
+                    <h3>أجمل لحظاتنا في فيديو</h3>
+                    <span>🎬</span>
+                </div>
+                <div class="video-wrapper">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/Ki-lHWnHv8E?si=y8RTlCWjkYNVhhgH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+ <!-- معرض الصور -->
+<div class="gallery">
+  <div class="section-title">
+    <span>💕</span>
+    <h3>صور لا تُنسى</h3>
+    <span>💕</span>
+  </div>
+
+  <!-- معرض الصور -->
+<div class="gallery">
+  <div class="section-title">
+    <span>💕</span>
+    <h3>صور لا تُنسى</h3>
+    <span>💕</span>
+  </div>
+
+  <!-- زر رفع الصور -->
+  <div style="text-align:center; margin-bottom:20px;">
+    <label style="
+      background:linear-gradient(135deg,#ff5f9e,#ff8ac7);
+      color:#fff;
+      padding:12px 24px;
+      border-radius:25px;
+      cursor:pointer;
+      font-size:16px;
+      display:inline-block;
+    ">
+      ❤️ ارفع صور ذكرياتكم
+      <input type="file" multiple accept="image/*" hidden onchange="uploadImages(event)">
+    </label>
+  </div>
+
+  <!-- الصور -->
+  <div class="gallery-grid" id="galleryGrid"></div>
+</div>
+
+<style>
+.gallery-frame {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.gallery-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>
+
+<script>
+const CLOUD_NAME = "YOUR_CLOUD_NAME";
+const UPLOAD_PRESET = "YOUR_UNSIGNED_PRESET";
+
+// album id من اللينك
+const params = new URLSearchParams(location.search);
+let albumId = params.get("album");
+
+if (!albumId) {
+  albumId = Math.random().toString(36).substring(2, 10);
+  params.set("album", albumId);
+  history.replaceState(null, "", "?" + params.toString());
+}
+
+const STORAGE_KEY = "album_" + albumId;
+const galleryGrid = document.getElementById("galleryGrid");
+
+// تحميل الصور المحفوظة
+loadSavedImages();
+
+async function uploadImages(e) {
+  for (let file of e.target.files) {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", UPLOAD_PRESET);
+
+    const res = await fetch(
+      `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
+      { method: "POST", body: formData }
+    );
+
+    const data = await res.json();
+    saveImage(data.secure_url);
+    addImage(data.secure_url);
+  }
+}
+
+function addImage(url) {
+  const div = document.createElement("div");
+  div.className = "gallery-item";
+  div.innerHTML = `
+    <div class="gallery-frame">
+      <img src="${url}">
+    </div>
+  `;
+  galleryGrid.appendChild(div);
+}
+
+function saveImage(url) {
+  const images = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  images.push(url);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(images));
+}
+
+function loadSavedImages() {
+  const images = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  if (!images) return;
+  images.forEach(addImage);
+}
+</script>
+
+            
+            <button class="btn-romantic" onclick="goToPage('wishes-screen')">
+                <span>🌟</span>
+                شوفي أمنياتي للعام الجديد
+                <span>🌟</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ================================ -->
+    <!-- شاشة الأمنيات (الصفحة الخامسة) -->
+    <!-- ================================ -->
+    <div class="screen" id="wishes-screen">
+        <div class="container">
+            <h1 class="big-romantic-title">
+                <span>🌟</span>
+                أمنياتنا للعام الجديد 2026
+                <span>🌟</span>
+            </h1>
+            
+            <p class="section-intro">
+                كل أمنية هنا من القلب، وكل حلم هنا هنحققه سوا بإذن الله 🤲💕
+            </p>
+
+            <!-- شبكة الأمنيات -->
+            <div class="wishes-grid">
+                <!-- أمنية 1 -->
+                <div class="wish-card">
+                    <div class="wish-icon">💑</div>
+
+                    <h3>معاكي دايماً</h3>
+                    <p>
+                        أتمنى نفضل جنب بعض في كل اللحظات، الحلوة والصعبة، 
+                        ونكون دايماً سند لبعض. حبنا يكون أقوى مع كل يوم جديد 💪❤️
+                    </p>
+
+                </div>
+                
+                <!-- أمنية 2 -->
+                <div class="wish-card">
+                    <div class="wish-icon">🏠</div>
+
+                    <h3>بيت العمر</h3>
+                    <p>
+                        نعمل بيت صغير فيه كل أحلامنا، مليان حب ودفا وضحك، 
+                        مكان نرجعله ونحس بالأمان والسعادة. بيتنا الصغير الجميل 🏡
+                    </p>
+
+                </div>
+                
+                <!-- أمنية 3 -->
+                <div class="wish-card">
+                    <div class="wish-icon">✈️</div>
+                    <div class="wish-decoration">🎄💕🎄</div>
+                    <h3>مغامرات جديدة</h3>
+                    <p>
+                        نسافر سوا لأماكن جديدة، نعمل ذكريات ما بتتنسى، 
+                        ونشوف الدنيا بعيون بعض. كل مكان معاكي هيبقى أجمل 🗺️✨
+                    </p>
+
+                </div>
+                
+                <!-- أمنية 4 -->
+                <div class="wish-card">
+                    <div class="wish-icon">😊</div>
+
+                    <h3>سعادتك الدائمة</h3>
+                    <p>
+                        أتمنى أشوفك مبتسمة كل يوم، وأكون أنا سبب ابتسامتك، 
+                        وأخليكي دايماً فرحانة ومبسوطة. سعادتك هي سعادتي 😊💝
+                    </p>
+
+                </div>
+                
+                <!-- أمنية 5 -->
+                <div class="wish-card">
+                    <div class="wish-icon">🎯</div>
+
+                    <h3>تحقيق الأحلام</h3>
+                    <p>
+                        نحقق كل اللي بنحلم بيه سوا، ونوصل لكل أهدافنا، 
+                        ونفرح بنجاحنا مع بعض. كل حلم هنحققه إيد في إيد 🌠
+                    </p>
+
+                </div>
+                
+                <!-- أمنية 6 -->
+                <div class="wish-card">
+                    <div class="wish-icon">💖</div>
+
+                    <h3>حب أبدي</h3>
+                    <p>
+                        نفضل نحب بعض أكتر وأكتر كل يوم، ومهما حصل، 
+                        قلبي يفضل ملك ليكي بس. حبنا يكون زي شجرة الكريسماس، دايم ومنور 🎄💕
+                    </p>
+
+                </div>
+
+                <!-- أمنية 7 -->
+                <div class="wish-card">
+                    <div class="wish-icon">🎓</div>
+
+                    <h3>النجاح والتطور</h3>
+                    <p>
+                        نتطور في حياتنا ونحقق نجاحات كبيرة، كل واحد فينا 
+                        يوصل لأحلامه ويبقى فخور بنفسه. نكبر مع بعض 📚✨
+                    </p>
+
+                </div>
+
+                <!-- أمنية 8 -->
+                <div class="wish-card">
+                    <div class="wish-icon">👨‍👩‍👧‍👦</div>
+
+                    <h3>عائلة سعيدة</h3>
+                    <p>
+                        نكون عائلة صغيرة سعيدة، مليانة حب وحنان، 
+                        نربي أطفالنا على الحب والأخلاق. عائلتنا الجميلة 👶❤️
+                    </p>
+
+                </div>
+            </div>            
+            <!-- الرسالة النهائية -->
+            <div class="final-message">
+                <div class="final-decoration-top">
+                    🎄 ❤️ 🎁 💝 🎄
+                </div>
+                
+                <h2 class="final-title">رسالة من القلب 💌</h2>
+                
+                <p class="final-text">
+                    حبيبتي، أنتِ أجمل هدية إداهالي الله، وأنا ممتن كل يوم إنك في حياتي.
+                    زي ما شجرة الكريسماس بتنور البيت، انتِ اللي بتنوري حياتي كلها.
+                </p>
+                
+                <p class="final-text">
+                    سنة 2026 هتكون سنتنا، سنة الأحلام والإنجازات والحب الكبير.
+                    سنة نحقق فيها كل أمنياتنا ونعمل ذكريات جديدة تضاف لذكرياتنا الجميلة.
+                </p>
+                
+                <p class="final-text special-text">
+                    كل ما أشوف شجرة كريسماس، هفتكر اللحظة دي واللحظات الجميلة اللي عشناها سوا.
+                    وكل ما السنة الجديدة تيجي، هتلاقيني واقف جنبك، ماسك إيدك، ومستعد لأي حاجة.
+                </p>
+                
+                <div class="love-declaration">
+                    <p class="love-sign">
+                        <span class="big-heart">💝</span><br>
+                        بحبك للأبد، من كل قلبي وروحي<br>
+                        <span class="signature-style">حبيبك المخلص</span><br>
+                        <small class="date-style">🎄 ديسمبر 2025 🎄</small>
+                    </p>
+                </div>
+
+
+            </div>
+            
+            <!-- أزرار التنقل -->
+            <div class="navigation-buttons">
+                <button class="btn-romantic" onclick="goToPage('password-screen')">
+                    <span>🎄</span>
+                    ارجعي للبداية
+                    <span>🎄</span>
+                </button>
+                <button class="btn-romantic" onclick="goToPage('memories-screen')">
+                    <span>📸</span>
+                    شوفي الذكريات تاني
+                    <span>📸</span>
+                </button>
+            </div>
+
+            <!-- شريط كريسماس في النهاية -->
+            <div class="christmas-footer">
+
+                <p class="footer-text">
+                    🎄 صنع بكل حب خصيصاً لأجمل شخص في حياتي 🎄
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ربط ملف JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
