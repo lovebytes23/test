@@ -333,7 +333,7 @@
 </style>
 
 <script>
-const CLOUD_NAME = "images";
+const CLOUD_NAME = "dupitg9lm";
 const UPLOAD_PRESET = "christmas_upload";
 
 
@@ -364,6 +364,7 @@ async function uploadImages(e) {
       `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
       { method: "POST", body: formData }
     );
+
 
     const data = await res.json();
 
@@ -401,6 +402,10 @@ function loadSavedImages() {
   if (!images) return;
   images.forEach(addImage);
 }
+
+const data = await res.json();
+console.log(data);
+
 </script>
 
             
