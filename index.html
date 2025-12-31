@@ -354,6 +354,7 @@ loadSavedImages();
 
 async function uploadImages(e) {
   for (let file of e.target.files) {
+
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", UPLOAD_PRESET);
@@ -364,10 +365,18 @@ async function uploadImages(e) {
     );
 
     const data = await res.json();
+
+    if (!data.secure_url) {
+      console.error("Cloudinary error:", data);
+      alert("الصورة لم تُرفع ❌");
+      continue;
+    }
+
     saveImage(data.secure_url);
     addImage(data.secure_url);
   }
 }
+
 
 function addImage(url) {
   const div = document.createElement("div");
